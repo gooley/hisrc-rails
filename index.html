@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Hisrc-rails by haihappen</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Hisrc-rails</h1>
+        <p class="header">Make owners of the MacBook Pro with Retina Display happy and provide high-res images within your Rails app.</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/haihappen/hisrc-rails/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/haihappen/hisrc-rails/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/haihappen/hisrc-rails">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/haihappen">haihappen</a></p>
+
+
+      </header>
+      <section>
+        <h1>hisrc-rails</h1>
+
+<p>Retina displays are coming! Be sure to make your Rails app ready today.</p>
+
+<p>How? Well, there are a lot of different approaches: </p>
+
+<ul>
+<li><a href="http://css-tricks.com/which-responsive-images-solution-should-you-use/">http://css-tricks.com/which-responsive-images-solution-should-you-use/</a></li>
+<li><a href="http://www.alistapart.com/articles/responsive-images-how-they-almost-worked-and-what-we-need/">http://www.alistapart.com/articles/responsive-images-how-they-almost-worked-and-what-we-need/</a></li>
+</ul><p>The one I like the most is <a href="https://github.com/teleject/hisrc">HiSRC</a>. This gem makes your live easier through two steps:</p>
+
+<ul>
+<li>It adds HiSRC to the Rails asset pipeline – no more messing around with javascript files.</li>
+<li>It provides a helper method to easy include HiSRC in your Rails views.</li>
+</ul><h2>Installation</h2>
+
+<p>In your <code>Gemfile</code>:</p>
+
+<div class="highlight"><pre><span class="n">gem</span> <span class="s1">'hisrc-rails'</span>
+</pre></div>
+
+<p>In your <code>application.js</code>:</p>
+
+<div class="highlight"><pre><span class="c1">//= require hisrc</span>
+
+<span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">'img'</span><span class="p">).</span><span class="nx">hisrc</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></div>
+
+<p>For detailed information about available configuration options be sure to checkout the <a href="https://github.com/teleject/hisrc#setting-up">HiSRC readme</a>.</p>
+
+<h2>Usage</h2>
+
+<p>This gem provides a nice little helper method to optimize your views: <code>responsive_image_tag</code></p>
+
+<p><code>responsive_image_tag</code> accepts the same options as <code>image_tag</code>, and two additional options as well:</p>
+
+<ul>
+<li>
+<code>:'1x'</code> - If no 1x option is provided, the <code>src</code> is used.</li>
+<li>
+<code>:'2x'</code> - If no 2x options is provided, "@2x" is added to the <code>src</code>. So "rails.png" becomes "<a href="mailto:rails@2x.png">rails@2x.png</a>".</li>
+</ul><h2>Examples</h2>
+
+<div class="highlight"><pre><span class="n">responsive_image_tag</span><span class="p">(</span><span class="s2">"rails.png"</span><span class="p">)</span>
+<span class="c1"># =&gt; &lt;img src="/assets/rails.png" data-1x="/assets/rails.png" data-2x="/assets/rails@2x.png" /&gt;</span>
+
+<span class="n">responsive_image_tag</span><span class="p">(</span><span class="s2">"http://placehold.it/100x100"</span><span class="p">,</span> <span class="ss">:'1x'</span> <span class="o">=&gt;</span> <span class="s2">"http://placehold.it/200x200"</span><span class="p">,</span> <span class="ss">:'2x'</span> <span class="o">=&gt;</span> <span class="s2">"http://placehold.it/400x400"</span><span class="p">)</span>
+<span class="c1"># =&gt; &lt;img src="http://placehold.it/100x100" data-1x="http://placehold.it/200x200" data-2x="http://placehold.it/200x200" /&gt;</span>
+</pre></div>
+
+<h2>Acknowledgements</h2>
+
+<p>Many thanks to <a href="https://github.com/1Marc">1Mark</a> for <a href="https://github.com/1Marc/hisrc">his first version</a> of HiSRC, and to <a href="https://github.com/teleject">teleject</a> for maintaining the <a href="https://github.com/teleject/hisrc">current version</a> of this really great jQuery plugin. :)</p>
+
+<h2>Contributing</h2>
+
+<ol>
+<li>Fork it</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Added some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol><h2>Copyright</h2>
+
+<p>(The MIT license)</p>
+
+<p>Copyright (c) 2012 Mario Uher</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+		          <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-30324853-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
